@@ -1,0 +1,531 @@
+/* 🌸 Estilo geral */
+body {
+    margin: 0;
+    font-family: 'Comfortaa', cursive;
+    color: #ffffff;
+    background-color: #000; /* fallback se o vídeo não carregar */
+    overflow-x: hidden;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* 🎬 Vídeo de fundo que rola com a página */
+  #bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    z-index: -100;
+    object-fit: cover;
+  }
+  
+  /* 💖 Cabeçalho */
+  header {
+    text-align: center;
+    background-color: transparent;
+    padding: 30px 20px;
+    border-bottom: 2px dashed rgba(255, 255, 255, 0.4);
+  }
+  
+  .frase-inicial {
+    font-family: 'Caveat', cursive;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #ffffff;
+  }
+  
+  /* 📎 Menu */
+  .menu {
+    margin-top: 20px;
+  }
+  
+  .menu a {
+    text-decoration: none;
+    color: #ffffff;
+    margin: 0 10px;
+    padding: 10px 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .menu a:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    color: #000000;
+  }
+  
+  /* 📷 Conteúdo principal */
+  .boas-vindas {
+    text-align: center;
+    padding: 40px 20px;
+  }
+  
+  .foto {
+    width: 80%;
+    max-width: 400px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px #000000aa;
+    margin-bottom: 20px;
+  }
+  
+  /* 🖋️ Rodapé */
+  footer {
+    text-align: center;
+    padding: 20px;
+    background-color: transparent;
+    font-size: 0.9em;
+    color: #dddddd;
+  }
+  
+  /* 💕 Corações flutuantes */
+  .corações {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  .coracao {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #ff9eb5;
+    clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 75%, 20% 100%, 0 35%);
+    opacity: 0.7;
+    animation: subir 4s linear infinite;
+  }
+  
+  @keyframes subir {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(-100vh) scale(1.3);
+      opacity: 0;
+    }
+  }
+  
+  /* 📱 Mobile Responsivo */
+  @media (max-width: 600px) {
+    .frase-inicial {
+      font-size: 1.8em;
+    }
+  
+    .menu a {
+      display: block;
+      margin: 10px auto;
+      font-size: 1em;
+    }
+  
+    .foto {
+      width: 90%;
+    }
+  
+    .boas-vindas {
+      padding: 20px 10px;
+    }
+  }
+  .contador {
+    text-align: center;
+    padding: 20px;
+    animation: fadeIn 1.5s ease-in-out;
+  }
+  
+  #dias-juntos {
+    font-size: 2em;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 10px;
+    animation: pulse 2s infinite;
+  }
+  
+  /* ✨ Animações visuais */
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.9; }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+/* 🐺 Mascote e mensagem */
+.mascote {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 80px;
+    z-index: 5;
+    animation: saltinho 2s infinite ease-in-out;
+    cursor: pointer;
+  }
+  
+  .mascote:active {
+    transform: scale(1.1) rotate(-5deg);
+    transition: transform 0.2s;
+  }
+  
+  #mensagem-bia {
+    position: fixed;
+    bottom: 100px;
+    right: 100px;
+    background-color: rgba(255, 255, 255, 0.85);
+    color: #5c2a4a;
+    font-size: 1em;
+    padding: 12px 18px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #00000044;
+    max-width: 250px;
+    z-index: 10;
+    font-family: 'Caveat', cursive;
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  @keyframes aparecer {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  
+  @keyframes saltinho {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  .linha-do-tempo {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+  
+  .evento {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    padding: 20px;
+    color: white;
+    animation: fadeInUp 0.7s ease forwards;
+    transform: translateY(20px);
+    opacity: 0;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  }
+  
+  .evento h3 {
+    margin-top: 0;
+    font-family: 'Caveat', cursive;
+    font-size: 1.8em;
+    color: #ffb3c6;
+  }
+  
+  .evento .data {
+    font-size: 0.9em;
+    color: #dddddd;
+    font-style: italic;
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  .evento p {
+    font-size: 1em;
+    line-height: 1.5;
+  }
+  
+  /* ✨ Animação */
+  @keyframes fadeInUp {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* 📱 Mobile Responsivo */
+  @media (max-width: 600px) {
+    .linha-do-tempo {
+      padding: 10px;
+    }
+  
+    .evento {
+      padding: 15px;
+      font-size: 0.95em;
+    }
+  
+    .evento h3 {
+      font-size: 1.4em;
+    }
+  }
+  .linha-do-tempo {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+  
+  .evento {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    padding: 20px;
+    color: white;
+    animation: fadeInUp 0.7s ease forwards;
+    transform: translateY(20px);
+    opacity: 0;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  }
+  
+  .evento h3 {
+    margin-top: 0;
+    font-family: 'Caveat', cursive;
+    font-size: 1.8em;
+    color: #ffb3c6;
+  }
+  
+  .evento .data {
+    font-size: 0.9em;
+    color: #dddddd;
+    font-style: italic;
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  .evento p {
+    font-size: 1em;
+    line-height: 1.5;
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .linha-do-tempo {
+      padding: 10px;
+    }
+  
+    .evento {
+      padding: 15px;
+      font-size: 0.95em;
+    }
+  
+    .evento h3 {
+      font-size: 1.4em;
+    }
+  }
+  #bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    z-index: -100;
+    object-fit: cover;
+  }
+  .evento.destaque {
+    transform: scale(1.03);
+    box-shadow: 0 0 25px #ffb3c6cc;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    z-index: 1;
+  }
+  .galeria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .foto-galeria {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .foto-galeria.destaque {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #ffb3c6cc;
+    z-index: 1;
+  }
+  
+  @media (max-width: 600px) {
+    .galeria {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .foto-galeria {
+      height: 120px;
+    }
+  }
+  .lightbox {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    flex-direction: column;
+  }
+  
+  .lightbox.ativo {
+    display: flex;
+  }
+  
+  .lightbox img {
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #fff;
+  }
+  
+  .lightbox .fechar {
+    font-size: 2em;
+    color: white;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  .cartas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .cartas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .carta {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 260px;
+    padding: 20px;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 0 15px rgba(255,255,255,0.1);
+  }
+  
+  .carta:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 25px #ffb3c6aa;
+  }
+  
+  .carta.aberta {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #5c2a4a;
+    box-shadow: 0 0 35px #ffb3c6cc;
+  }
+  
+  .carta h3 {
+    font-family: 'Caveat', cursive;
+    font-size: 1.6em;
+    margin-bottom: 10px;
+    color: #ffb3c6;
+  }
+  
+  .carta.aberta h3 {
+    color: #b3005e;
+  }
+  
+  .carta .texto-carta {
+    font-size: 1em;
+    line-height: 1.5;
+    font-family: 'Comfortaa', sans-serif;
+  }
+  .playlist {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: auto;
+  }
+  
+  .musica {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    width: 250px;
+    box-shadow: 0 0 15px rgba(255,255,255,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .musica:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #ffb3c6cc;
+  }
+  
+  .musica h3 {
+    font-family: 'Caveat', cursive;
+    font-size: 1.6em;
+    color: #ffb3c6;
+  }
+  
+  .musica p {
+    margin: 8px 0;
+    font-size: 1em;
+    font-family: 'Comfortaa', sans-serif;
+  }
+  
+  .musica a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #1db954;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 0.95em;
+    transition: background-color 0.3s;
+  }
+  
+  .musica a:hover {
+    background-color: #15943c;
+  }
+  .musica.destaque {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #ffb3c6cc;
+    z-index: 1;
+  }
+  .popup-conteudo ul {
+    list-style: none;
+    padding: 0;
+    font-size: 0.95em;
+    color: black; /* <-- texto preto */
+  }
+  .popup-conteudo h3 {
+    margin-bottom: 15px;
+    font-family: 'Caveat', cursive;
+    font-size: 1.6em;
+    color: black; /* título em preto */
+  }
+      
+   
+  
+  

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nossa Galeria 📸</title>
+  <link rel="icon" href="imagens/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="estilo/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Comfortaa&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- 🎬 Vídeo de fundo -->
+  <video autoplay muted loop id="bg-video">
+    <source src="videos/fundo-romantico.mp4" type="video/mp4">
+    Seu navegador não suporta vídeo de fundo 😢
+  </video>
+
+  <!-- 🐺 Mascote e mimo -->
+  <img src="imagens/mascote-lobo.gif" class="mascote" alt="Mascote do WolF" onclick="uivar()" />
+  <div id="mensagem-bia"></div>
+
+  <header>
+    <h1 class="frase-inicial">Nossa Galeria 📸</h1>
+    <nav class="menu">
+      <a href="index.html">🏠 Início</a>
+      <a href="historia.html">💫 História</a>
+      <a href="cartas.html">💌 Cartas</a>
+      <a href="playlist.html">🎧 Playlist</a>
+      <a href="colinho.html">🧸 Colinho</a>
+      <a href="provas.html">🔐 Provas</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="galeria">
+      <img src="imagens/nos.jpg" alt="Nós dois" class="foto-galeria" />
+      <img src="imagens/foto1.jpg" alt="Momento especial 1" class="foto-galeria" />
+      <img src="imagens/foto2.jpg" alt="Momento especial 2" class="foto-galeria" />
+      <img src="imagens/foto3.jpg" alt="Momento especial 3" class="foto-galeria" />
+      <img src="imagens/foto4.jpg" alt="Momento especial 4" class="foto-galeria" />
+      <img src="imagens/foto5.jpg" alt="Momento especial 5" class="foto-galeria" />
+    </section>
+  </main>
+
+  <!-- Modal de imagem ampliada -->
+  <div id="lightbox" class="lightbox" onclick="fecharZoom()">
+    <img id="zoom-imagem" src="" alt="Zoom da imagem" />
+    <span class="fechar">&times;</span>
+  </div>
+
+  <footer>
+    <p>Nossos momentos mais lindos juntos 💕</p>
+  </footer>
+
+  <script src="scripts/mascote.js"></script>
+  <script src="scripts/galeria.js"></script>
+</body>
+</html>

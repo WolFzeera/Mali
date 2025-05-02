@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cartas pra você 💌</title>
+  <link rel="icon" href="imagens/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="estilo/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Comfortaa&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- 🎬 Vídeo de fundo -->
+  <video autoplay muted loop id="bg-video">
+    <source src="videos/fundo-romantico.mp4" type="video/mp4">
+    Seu navegador não suporta vídeo de fundo 😢
+  </video>
+
+  <!-- 🐺 Mascote e mimo -->
+  <img src="imagens/mascote-lobo.gif" class="mascote" alt="Mascote do WolF" onclick="uivar()" />
+  <div id="mensagem-bia"></div>
+
+  <header>
+    <h1 class="frase-inicial">Cartas pra você 💌</h1>
+    <nav class="menu">
+      <a href="index.html">🏠 Início</a>
+      <a href="historia.html">💫 História</a>
+      <a href="galeria.html">📸 Galeria</a>
+      <a href="playlist.html">🎧 Playlist</a>
+      <a href="colinho.html">🧸 Colinho</a>
+      <a href="provas.html">🔐 Provas</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="cartas" id="cartas-container">
+      <!-- Cartas são geradas pelo JS -->
+    </section>
+  </main>
+
+  <footer>
+    <p>Pra você guardar no coração, bobinha 💕</p>
+  </footer>
+
+  <script src="scripts/mascote.js"></script>
+  <script>
+    const cartas = [
+      { titulo: "Só você faz isso comigo...", mensagem: "Você me desmonta com um sorriso, me acalma com a voz, me acelera com o olhar..." },
+      { titulo: "Quando você me chama de seu...", mensagem: "É como se o mundo ficasse no lugar. Você basta. Você é meu sempre." },
+      { titulo: "No futuro, eu ainda vou te escolher", mensagem: "Mesmo se tudo mudar... ainda será você. Porque amar você é destino." },
+      { titulo: "Acordar com você no pensamento", mensagem: "Você é meu motivo bobo de sorrir em silêncio toda manhã." },
+      { titulo: "Amar você é tão leve", mensagem: "Você me faz querer ser melhor sem me exigir nada. Isso é amor de verdade." },
+      { titulo: "Seu abraço é meu lar", mensagem: "Em seus braços, encontro paz. É onde meu coração se sente em casa." },
+      { titulo: "Seu sorriso ilumina meu dia", mensagem: "Basta um sorriso seu para meu mundo ganhar cor e sentido." },
+      { titulo: "Cada momento com você é único", mensagem: "Com você, até o silêncio é cheio de significado." },
+      { titulo: "Você é meu sonho realizado", mensagem: "Sempre sonhei com um amor assim. E você superou todos." },
+      { titulo: "Te amar é minha alegria", mensagem: "Não existe nada que me faça mais feliz do que te amar." },
+      { titulo: "Você é minha inspiração", mensagem: "Seu amor me inspira a ser melhor a cada dia." },
+      { titulo: "Nosso amor é eterno", mensagem: "A cada dia que passa, tenho mais certeza de que é pra sempre." },
+      { titulo: "Você completa meu mundo", mensagem: "Agora tudo está completo com sua presença." },
+      { titulo: "Seu amor é meu refúgio", mensagem: "Em meio ao caos, seu amor é meu porto seguro." },
+      { titulo: "Você é meu tudo", mensagem: "Minha vida sem você não faz sentido. Você é meu tudo." },
+      { titulo: "Amar você é fácil", mensagem: "Com seu jeito doce, amar você é natural." },
+      { titulo: "Você é meu melhor amigo e amor", mensagem: "Além de amor, você é meu parceiro e confidente." },
+      { titulo: "Cada dia com você é uma bênção", mensagem: "Saber que te tenho é o maior presente da vida." },
+      { titulo: "Você é minha razão de sorrir", mensagem: "Seu amor traz alegria constante aos meus dias." },
+      { titulo: "Com você tudo é melhor", mensagem: "Sua presença torna tudo mais leve, mais bonito, mais feliz." }
+    ];
+
+    const container = document.getElementById("cartas-container");
+
+    cartas.forEach((carta, index) => {
+      const cartaDiv = document.createElement("div");
+      cartaDiv.classList.add("carta");
+      cartaDiv.innerHTML = `
+        <h3>${carta.titulo}</h3>
+        <p class="texto-carta" data-texto="${carta.mensagem}">Clique para ler 💖</p>
+      `;
+      cartaDiv.addEventListener("click", () => abrirCarta(cartaDiv));
+      container.appendChild(cartaDiv);
+    });
+
+    function abrirCarta(el) {
+      const p = el.querySelector(".texto-carta");
+      const texto = p.getAttribute("data-texto");
+      p.textContent = "";
+      let i = 0;
+
+      function escrever() {
+        if (i < texto.length) {
+          p.textContent += texto.charAt(i);
+          i++;
+          setTimeout(escrever, 35);
+        }
+      }
+
+      el.classList.add("aberta");
+      escrever();
+    }
+  </script>
+</body>
+</html>

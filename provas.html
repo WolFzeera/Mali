@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Provas de Amor 🔐</title>
+  <link rel="icon" href="imagens/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="estilo/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Comfortaa&display=swap" rel="stylesheet" />
+  <style>
+    .provas-container {
+      text-align: center;
+      padding: 60px 20px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .senha-input {
+      padding: 12px 20px;
+      font-size: 1.1em;
+      border-radius: 20px;
+      border: 2px solid #ffb3c6;
+      width: 280px;
+      max-width: 80%;
+      outline: none;
+      font-family: 'Comfortaa', sans-serif;
+      margin-bottom: 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .senha-btn {
+      background-color: #ffb3c6;
+      color: white;
+      padding: 10px 24px;
+      border: none;
+      border-radius: 20px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-family: 'Comfortaa', sans-serif;
+    }
+
+    .senha-btn:hover {
+      background-color: #e27da0;
+    }
+
+    .mensagem-secreta {
+      margin-top: 30px;
+      font-size: 1.6em;
+      font-family: 'Caveat', cursive;
+      color: white;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      animation: zoomIn 0.8s ease forwards;
+    }
+
+    .mensagem-container {
+      background-color: rgba(0,0,0,0.6);
+      padding: 30px;
+      border-radius: 20px;
+      margin-top: 40px;
+      box-shadow: 0 0 30px #ffb3c688;
+      border: 2px dashed #ffb3c6;
+      opacity: 0;
+      animation: slideUpFade 1.2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes slideUpFade {
+      0% { transform: translateY(40px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .popup-secreto {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .popup-conteudo {
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 400px;
+      text-align: center;
+      font-family: 'Comfortaa', sans-serif;
+    }
+
+    .popup-conteudo h3 {
+      margin-bottom: 15px;
+      font-family: 'Caveat', cursive;
+      font-size: 1.6em;
+    }
+
+    .popup-conteudo ul {
+      list-style: none;
+      padding: 0;
+      font-size: 0.95em;
+    }
+
+    .popup-conteudo li {
+      margin: 5px 0;
+    }
+
+    .fechar-popup {
+      margin-top: 20px;
+      background-color: #ffb3c6;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .fechar-popup:hover {
+      background-color: #d97e9a;
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop id="bg-video">
+    <source src="videos/fundo-romantico.mp4" type="video/mp4">
+    Seu navegador não suporta vídeo de fundo 😢
+  </video>
+
+  <img src="imagens/mascote-lobo.gif" class="mascote" alt="Mascote do WolF" onclick="uivar()" />
+  <div id="mensagem-bia"></div>
+
+  <header>
+    <h1 class="frase-inicial">Provas de Amor 🔐</h1>
+    <nav class="menu">
+      <a href="index.html">🏠 Início</a>
+      <a href="historia.html">💫 História</a>
+      <a href="galeria.html">📸 Galeria</a>
+      <a href="cartas.html">💌 Cartas</a>
+      <a href="playlist.html">🎧 Playlist</a>
+      <a href="colinho.html">🧸 Colinho</a>
+      <a href="provas.html" class="ativo">🔐 Provas</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="provas-container">
+      <input type="text" class="senha-input" id="senha" placeholder="Digite uma senha secreta..." />
+      <br />
+      <button class="senha-btn" onclick="verificarSenha()">Desbloquear 💘</button>
+
+      <div style="margin-top: 30px;">
+        <div style="width: 80%; max-width: 400px; margin: 10px auto; background-color: rgba(255,255,255,0.2); border-radius: 25px;">
+          <div id="barra" style="height: 20px; width: 0%; background: linear-gradient(90deg, #ffb3c6, #e27da0); border-radius: 25px; transition: width 0.4s ease;"></div>
+        </div>
+        <div style="color: white; font-family: 'Comfortaa', sans-serif;" id="percentual">0% descoberto</div>
+      </div>
+
+      <div id="resultado"></div>
+    </div>
+  </main>
+
+  <div id="popup" class="popup-secreto" style="display:none;">
+    <div class="popup-conteudo">
+      <h3>Senhas disponíveis 👀</h3>
+      <ul id="lista-senhas"></ul>
+      <button class="fechar-popup" onclick="fecharPopup()">Fechar</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>Alguns segredos são só nossos 💞</p>
+  </footer>
+
+  <script src="scripts/mascote.js"></script>
+  <script>
+    const segredos = [
+      { senha: "primeiravez", mensagem: "Você desbloqueou nossa primeira lembrança 💘" },
+      { senha: "surpresa2025", mensagem: "Aqui está aquela surpresa que guardei só pra você 😍" },
+      { senha: "tudomeu", mensagem: "Sim, você é tudo meu. Pra sempre. 💍" },
+      { senha: "colinhoextra", mensagem: "Vem cá... tem mais colinho só seu 🧸" },
+      { senha: "segredo123", mensagem: "Você achou um dos meus segredos favoritos 🤫" },
+      { senha: "1404", mensagem: "O dia em que você nasceu... e eu também. Coincidência? Só se for cósmica. 🌌" },
+      { senha: "1504", mensagem: "O dia que você saiu de SP pra me ver. Foi o começo da nossa eternidade. 💫" },
+      { senha: "primeirobeijo", mensagem: "Eu ainda lembro da sensação. E ainda sinto borboletas só de lembrar 🦋" },
+      { senha: "teamo", mensagem: "Te amo tanto que até o HTML ficou com ciúme 😘" },
+      { senha: "azul", mensagem: "Eu sabia que ia tentar essa meu amor, tenha a próxima kkkk" },
+      { senha: "mali", mensagem: "Quando te chamo de Mali, parece que o mundo fica mais leve... Mali 💗" },
+      { senha: "lobo", mensagem: "Lobo te protege. Lobo cuida. Lobo nunca solta você 🐺" },
+      { senha: "1602", mensagem: "Desde aquele dia, eu sei que era você. Sempre foi. 16/02/2025 💍" },
+      { senha: "chuva", mensagem: "Deitados, ouvindo a chuva... e meu coração batendo por você 🌧️" },
+      { senha: "olhinho", mensagem: "Até seu olho de sono é lindo 😴" },
+      { senha: "mimimi", mensagem: "Você faz birra, mas é minha birrenta favorita 💞" },
+      { senha: "vcemeu", mensagem: "Você é meu mundo inteiro... só que em forma de gente 💕" },
+      { senha: "2025", mensagem: "Esse ano... esse olhar. Nunca esquecerei." },
+      { senha: "nossoacordo", mensagem: "Nosso combinado: nunca soltar, mesmo quando der medo 🤝" },
+      { senha: "surpresinha", mensagem: "Tem algo vindo por aí... prepare-se 😘" }
+    ];
+
+    let desbloqueadas = new Set();
+
+    function verificarSenha() {
+      const input = document.getElementById("senha").value.trim().toLowerCase();
+      const resultado = document.getElementById("resultado");
+      const segredo = segredos.find(item => item.senha.toLowerCase() === input);
+
+      resultado.innerHTML = "";
+
+      if (input.includes("amo")) {
+        abrirPopup();
+        return;
+      }
+
+      if (segredo) {
+        if (!desbloqueadas.has(input)) desbloqueadas.add(input);
+        resultado.innerHTML = `
+          <div class="mensagem-container">
+            <div class="mensagem-secreta">${segredo.mensagem}</div>
+          </div>
+        `;
+        atualizarBarra();
+      } else {
+        resultado.innerHTML = `
+          <div class="mensagem-secreta" style="color:#ffb3c6;">Senha inválida... tenta outra! 😢</div>
+        `;
+      }
+    }
+
+    function atualizarBarra() {
+      const total = segredos.length;
+      const valor = desbloqueadas.size;
+      const perc = Math.floor((valor / total) * 100);
+      document.getElementById("barra").style.width = perc + "%";
+      document.getElementById("percentual").textContent = `${perc}% descoberto`;
+    }
+
+    function abrirPopup() {
+      document.getElementById("popup").style.display = "flex";
+      const lista = document.getElementById("lista-senhas");
+      lista.innerHTML = segredos.map(s => `<li>${s.senha}</li>`).join("");
+    }
+
+    function fecharPopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
+</body>
+</html>

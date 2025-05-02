@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Colinho 🧸</title>
+  <link rel="icon" href="imagens/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="estilo/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Comfortaa&display=swap" rel="stylesheet" />
+  <style>
+    .colinho-container {
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    .colinho-btn {
+      font-family: 'Comfortaa', cursive;
+      background-color: #ffb3c6;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 15px;
+      border: none;
+      font-size: 1.2em;
+      cursor: pointer;
+      box-shadow: 0 0 20px #ffb3c6aa;
+      transition: background-color 0.3s ease;
+    }
+
+    .colinho-btn:hover {
+      background-color: #e27da0;
+    }
+
+    .mensagem-colinho {
+      font-size: 1.4em;
+      color: white;
+      margin-top: 30px;
+      font-family: 'Caveat', cursive;
+      max-width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .coraçao-flutuante {
+      position: absolute;
+      color: #ffb3c6;
+      animation: flutuar 4s ease-in-out infinite;
+      font-size: 2em;
+      user-select: none;
+    }
+
+    @keyframes flutuar {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-200px) scale(1.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop id="bg-video">
+    <source src="videos/fundo-romantico.mp4" type="video/mp4">
+    Seu navegador não suporta vídeo de fundo 😢
+  </video>
+
+  <img src="imagens/mascote-lobo.gif" class="mascote" alt="Mascote do WolF" onclick="uivar()" />
+  <div id="mensagem-bia"></div>
+
+  <header>
+    <h1 class="frase-inicial">Aqui é seu colinho, Mali 🧸</h1>
+    <nav class="menu">
+      <a href="index.html">🏠 Início</a>
+      <a href="historia.html">💫 História</a>
+      <a href="galeria.html">📸 Galeria</a>
+      <a href="cartas.html">💌 Cartas</a>
+      <a href="playlist.html">🎧 Playlist</a>
+      <a href="colinho.html" class="ativo">🧸 Colinho</a>
+      <a href="provas.html">🔐 Provas</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="colinho-container">
+      <button class="colinho-btn" onclick="darColinho()">Me dá colinho?</button>
+      <div class="mensagem-colinho" id="mensagem"></div>
+    </div>
+    <audio id="audioChuva" loop>
+      <source src="audios/chuva-suave.mp3" type="audio/mp3" />
+      Seu navegador não suporta áudio 😢
+    </audio>
+  </main>
+
+  <footer>
+    <p>Esse espaço é todo seu, Mali 💕</p>
+  </footer>
+
+  <script src="scripts/mascote.js"></script>
+  <script>
+    const frases = [
+      "Vem aqui, meu amor... tô com saudade de te embalar 💕",
+      "Fecha os olhos... tô aqui, só falta você no meu abraço 😴",
+      "Colinho de WolF resolve tudo 🧸",
+      "Se eu pudesse te encolher aqui no peito, eu faria agora mesmo",
+      "Fica aqui comigo, deixa o mundo lá fora um pouco 💌",
+      "Você é meu pedacinho favorito de paz"
+    ];
+
+    function darColinho() {
+      const mensagem = document.getElementById("mensagem");
+      const audio = document.getElementById("audioChuva");
+      const frase = frases[Math.floor(Math.random() * frases.length)];
+      mensagem.textContent = frase;
+      audio.play();
+
+      for (let i = 0; i < 10; i++) {
+        const coraçao = document.createElement("div");
+        coraçao.classList.add("coraçao-flutuante");
+        coraçao.textContent = "💗";
+        coraçao.style.left = Math.random() * 100 + "vw";
+        coraçao.style.top = "80vh";
+        document.body.appendChild(coraçao);
+
+        setTimeout(() => coraçao.remove(), 4000);
+      }
+    }
+  </script>
+</body>
+</html>
